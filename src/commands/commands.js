@@ -56,17 +56,12 @@ function getItemRestId() {
 
 /* Simple Forward */
 function simpleForwardEmail() {
-  if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+  
     Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
       var ewsId = Office.context.mailbox.item.itemId;
       var accessToken = result.value;
       simpleForwardFunc(accessToken);
-    });
-  } else {
-    return;
-  }
-  
-  
+    }); 
 }
 
 function simpleForwardFunc(accessToken) {
