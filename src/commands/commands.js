@@ -91,7 +91,7 @@ function simpleForwardFunc(accessToken) {
     data: forwardMeta,
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function(response){
-    sucessNotif(response);
+    sucessNotif("test");
   });
 }
 
