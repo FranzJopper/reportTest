@@ -56,12 +56,11 @@ function getItemRestId() {
 
 /* Simple Forward */
 function simpleForwardEmail() {
-  
-    Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-      var ewsId = Office.context.mailbox.item.itemId;
-      var accessToken = result.value;
-      simpleForwardFunc(accessToken);
-    }); 
+  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
+    var ewsId = Office.context.mailbox.item.itemId;
+    var accessToken = result.value;
+    simpleForwardFunc(accessToken);
+  });
 }
 
 function simpleForwardFunc(accessToken) {
