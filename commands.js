@@ -91,7 +91,7 @@ function simpleForwardFunc(accessToken) {
     data: forwardMeta,
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function(response){
-    sucessNotif("Email Forward successful!");
+    sucessNotif(response);
   });
 }
 
@@ -162,10 +162,3 @@ function forwardAsAttachmentFunc(accessToken) {
   }); // ajax.get.done ends
 }
 
-function writeHelloWorld(event) {
-  // Récupérer l'objet item du message actuel
-  sucessNotif("Email forward as attachment successful!");
-
-  // Indiquer que la fonction de la commande est terminée
-  event.completed();
-}
