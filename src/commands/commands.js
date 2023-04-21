@@ -2,11 +2,11 @@
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-/* global global, Office, self, window 
+/* global global, Office, self, window */
 Office.onReady(() => {
   // If needed, Office.js is ready to be called
 });
-*/
+
 function getGlobal() {
   return typeof self !== "undefined"
     ? self
@@ -69,15 +69,15 @@ function simpleForwardFunc(accessToken) {
   // Construct the REST URL to the current item.
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
-  var forwardUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + itemId + "/forward";
+  var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
 
   const forwardMeta = JSON.stringify({
     Comment: "FYI",
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "azerty",
-          Address: "lolouol94@hotmail.fr"
+          Name: "chiheb",
+          Address: "benjjam@hotmail.fr"
         }
       }
     ]
@@ -95,15 +95,6 @@ function simpleForwardFunc(accessToken) {
   });
 }
 
-
-/* Forward as Attachment */
-function forwardAsAttachment(){
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    var ewsId = Office.context.mailbox.item.itemId;
-    var accessToken = result.value;
-    forwardAsAttachmentFunc(accessToken);
-  });
-}
 
 /* Forward as Attachment */
 function forwardAsAttachment(){
@@ -139,7 +130,7 @@ function forwardAsAttachmentFunc(accessToken) {
         },
         "ToRecipients": [{
           "EmailAddress": {
-            "Address": "lolouol94@hotmail.fr"
+            "Address": "benjjam@hotmail.fr"
           }
         }],
         "Attachments": [
@@ -170,4 +161,3 @@ function forwardAsAttachmentFunc(accessToken) {
 
   }); // ajax.get.done ends
 }
-
