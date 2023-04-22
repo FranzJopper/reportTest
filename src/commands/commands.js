@@ -92,6 +92,13 @@ function simpleForwardFunc(accessToken) {
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function(response){
     sucessNotif("Email Forward successful!");
+    //Note à moi même : Always permet de faire cette tache meme si on reussi, essaye de confirmer ça et donc de changer le code en conséquence
+    // Supprimer le message électronique d'origine
+   Office.context.mailbox.item.deleteAsync(function (asyncResult) {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+       console.error(asyncResult.error.message);
+    }
+ });
   });
 }
 
