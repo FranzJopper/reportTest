@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Confirmation de transfert</title>
+</head>
+<body>
+   <h2>Voulez-vous vraiment transférer cet email ?</h2>
+   <button id="oui">Oui</button>
+   <button id="non">Non</button>
+   <script type="text/javascript">
+      document.getElementById("oui").addEventListener("click", function () {
+         Office.context.ui.messageParent("transferer");
+      });
+      document.getElementById("non").addEventListener("click", function () {
+         Office.context.ui.messageParent("annuler");
+      });
+   </script>
+</body>
+</html>

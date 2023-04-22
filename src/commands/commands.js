@@ -95,6 +95,31 @@ function simpleForwardFunc(accessToken) {
   });
 }
 
+function confirmationSimpleForward() {
+  Office.context.ui.displayDialogAsync(
+     'https://franzjopper.github.io/reportTest/dialogue/confirm-dialog.html',
+     { height: 50, width: 50 },
+     function (asyncResult) {
+        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+           var dialog = asyncResult.value;
+           dialog.addEventHandler(
+              Office.EventType.DialogMessageReceived,
+              function (args) {
+                 if (args.message === "transferer") {
+                    simpleForwardEmail();
+                    dialog.close();
+                 } else {
+                    dialog.close();
+                 }
+              }
+           );
+        } else {
+          console.error(asyncResult.error.message); //gestion d'erreur
+        }
+     }
+  );
+}
+
 
 /* Forward as Attachment */
 function forwardAsAttachment(){
