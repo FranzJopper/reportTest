@@ -111,12 +111,11 @@ function confirmationSimpleForward() {
                  if (args.message === "transferer") {
                     simpleForwardEmail();
                     suppEmail();
-                    
                     dialog.close();
-                    sucessNotif("annulé l'action");
-                    return;
+                    
                  } else {
                     dialog.close();
+                    sucessNotif("annulé l'action");
                     return;
                  }
               }
@@ -147,7 +146,7 @@ function suppEmailFunc(accessToken) {
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function(response){
       sucessNotif("Email delete successful!");
-      return
+      return;
     });
   }
 
