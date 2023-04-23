@@ -140,10 +140,8 @@ function suppEmailFunc(accessToken) {
     $.ajax({
       url: deleteUrl,
       type: "DELETE",
-      dataType: "json",
-      contentType: "application/json",
       headers: { Authorization: "Bearer " + accessToken }
-    }).done(function(response){
+    }).always(function(response){
       sucessNotif("Email delete successful!");
     });
   }
