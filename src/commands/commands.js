@@ -129,7 +129,7 @@ function suppEmail() {
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
     var itemId = getItemRestId();
     var accessToken = result.value;
-    var deleteUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + itemId;
+    var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId;
 
     $.ajax({
       url: deleteUrl,
