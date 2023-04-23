@@ -124,24 +124,29 @@ function confirmationSimpleForward() {
   );
 }
 
-function suppEmail() {
-  
+
+function suppEmail(){
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    var itemId = getItemRestId();
+    var itemId = Office.context.mailbox.item.itemId;
     var accessToken = result.value;
+    suppEmailFunc(accessToken);
+});
+}
+
+function suppEmailFunc(accessToken) {
+    var itemId = getItemRestId();
     var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId;
 
     $.ajax({
       url: deleteUrl,
       type: "DELETE",
+      dataType: "json",
+      contentType: "application/json",
       headers: { Authorization: "Bearer " + accessToken }
     }).done(function(response){
       sucessNotif("Email delete successful!");
-    }).fail(function(error){
-      failedNotif(response);
     });
-  });
-}
+  }
 
 
 
