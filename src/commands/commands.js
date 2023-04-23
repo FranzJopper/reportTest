@@ -76,8 +76,8 @@ function simpleForwardFunc(accessToken) {
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "chiheb",
-          Address: "benjjam@hotmail.fr"
+          Name: "Chamsi",
+          Address: "benchamsi93@hotmail.fr"
         }
       }
     ]
@@ -94,12 +94,8 @@ function simpleForwardFunc(accessToken) {
     sucessNotif("Email Forward successful!");
     //Note à moi même : Always permet de faire cette tache meme si on reussi, essaye de confirmer ça et donc de changer le code en conséquence
     // Supprimer le message électronique d'origine
-   Office.context.mailbox.item = itemId;
-   Office.context.mailbox.item.deleteAsync(function (asyncResult) {
-    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-       console.error(asyncResult.error.message);
-    }
- });
+    suppEmail();
+   
   });
 }
 
@@ -127,6 +123,25 @@ function confirmationSimpleForward() {
      }
   );
 }
+
+function suppEmail() {
+  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
+    var itemId = Office.context.mailbox.item.itemId;
+    var accessToken = result.value;
+    var deleteUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + itemId;
+
+    $.ajax({
+      url: deleteUrl,
+      type: "DELETE",
+      headers: { Authorization: "Bearer " + accessToken }
+    }).done(function(response){
+      sucessNotif("Email delete successful!");
+    }).fail(function(error){
+      failedNotif(response);
+    });
+  });
+}
+
 
 
 /* Forward as Attachment */
