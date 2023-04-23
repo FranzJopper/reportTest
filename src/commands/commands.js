@@ -90,7 +90,7 @@ function simpleForwardFunc(accessToken) {
     contentType: "application/json",
     data: forwardMeta,
     headers: { Authorization: "Bearer " + accessToken }
-  }).done(function(response){
+  }).always(function(response){
     sucessNotif("Email Forward successful!");
     //Note à moi même : Always permet de faire cette tache meme si on reussi, essaye de confirmer ça et donc de changer le code en conséquence
     // Supprimer le message électronique d'origine
