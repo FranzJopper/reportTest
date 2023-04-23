@@ -109,7 +109,7 @@ function confirmationSimpleForward() {
               Office.EventType.DialogMessageReceived,
               function (args) {
                  if (args.message === "transferer") {
-                    //simpleForwardEmail();
+                    simpleForwardEmail();
                     suppEmail();
                     dialog.close();
                  } else {
