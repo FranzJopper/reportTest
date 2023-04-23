@@ -109,7 +109,7 @@ function confirmationSimpleForward() {
               Office.EventType.DialogMessageReceived,
               function (args) {
                  if (args.message === "transferer") {
-                    simpleForwardEmail();
+                    //simpleForwardEmail();
                     suppEmail();
                     dialog.close();
                  } else {
@@ -127,7 +127,7 @@ function confirmationSimpleForward() {
 
 function suppEmail(){
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    var itemId = Office.context.mailbox.item.itemId;
+    //var itemId = Office.context.mailbox.item.itemId;
     var accessToken = result.value;
     suppEmailFunc(accessToken);
 });
