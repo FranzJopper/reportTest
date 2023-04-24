@@ -55,15 +55,15 @@ function getItemRestId() {
 }
 
 /* Simple Forward */
-function simpleForwardEmail(mail,nom) {
+function simpleForwardEmail() {
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
     var ewsId = Office.context.mailbox.item.itemId;
     var accessToken = result.value;
-    simpleForwardFunc(accessToken,mail,nom);
+    simpleForwardFunc(accessToken);
   });
 }
 
-function simpleForwardFunc(accessToken,mail,nom) {
+function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
 
   // Construct the REST URL to the current item.
@@ -76,8 +76,8 @@ function simpleForwardFunc(accessToken,mail,nom) {
     ToRecipients: [
       {
         EmailAddress: {
-          Name: nom,
-          Address: mail
+          Name: "Chamsi",
+          Address: "benchamsi93@hotmail.fr"
         }
       }
     ]
@@ -98,7 +98,7 @@ function simpleForwardFunc(accessToken,mail,nom) {
   });
 }
 
-function confirmationSimpleForward(mail,nom) {
+function confirmationSimpleForward() {
   Office.context.ui.displayDialogAsync(
      'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
      { height: 50, width: 50, hideTitle: true, displayInIframe: true },
@@ -109,7 +109,7 @@ function confirmationSimpleForward(mail,nom) {
               Office.EventType.DialogMessageReceived,
               function (args) {
                  if (args.message === "transferer") {
-                    simpleForwardEmail(mail,nom);
+                    simpleForwardEmail();
                     suppEmail();
                     dialog.close();
                     
@@ -150,33 +150,10 @@ function suppEmailFunc(accessToken) {
       data: deleteMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function(response){
-      sucessNotif("Email delete successful! 2");
+      sucessNotif("Email delete successful!");
       
     });
   }
-
-
-  Office.initialize = function() {
-    Office.context.mailbox.addHandlerAsync(
-      Office.EventType.ItemChanged,
-      function(eventArgs) {
-        var args = eventArgs.arguments;
-        var arg1 = args[0].value;
-        var arg2 = args[1].value;
-  
-        confirmationSimpleForward(arg1, arg2);
-      },
-      function(error) {
-        // gestion des erreurs ici
-      }
-    );
-  };
-  
-
-
-
-
-
 
 
 
