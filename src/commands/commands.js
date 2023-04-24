@@ -28,7 +28,6 @@ function sucessNotif(msg) {
     persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
-  Office.context.mailbox.item.notificationMessages.removeAsync(id);
 }
 
 function failedNotif(msg) {
@@ -152,17 +151,7 @@ function suppEmailFunc(accessToken) {
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function(response){
       sucessNotif("Email delete successful!");
-      Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult) {
-        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-          var notificationMessages = asyncResult.value;
-          for (var key in notificationMessages) {
-            // Remove the notification message
-            Office.context.mailbox.item.notificationMessages.removeAsync(key);
-          }
-        } else {
-          console.error(asyncResult.error.message);
-        }
-      });
+      
     });
   }
 
