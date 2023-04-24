@@ -19,12 +19,6 @@ function getGlobal() {
 
 const g = getGlobal();
 
-Office.initialize = function (reason) {
-
-    // Supprimer la notification de chargement par défaut
-    Office.context.ui.clearNotificationMessages();
-  
-};
 
 function sucessNotif(msg) {
   var id = "0";
