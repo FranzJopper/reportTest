@@ -117,6 +117,7 @@ function confirmationSimpleForward() {
                  } else {
                     dialog.close();
                     sucessNotif("annulé l'action");
+                    Office.context.ui.clearNotificationMessages();
                     
                  }
               }
