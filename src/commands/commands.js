@@ -20,11 +20,10 @@ function getGlobal() {
 const g = getGlobal();
 
 Office.initialize = function (reason) {
-  if (reason === Office.InitializationReasons.DocumentReady) {
+
     // Supprimer la notification de chargement par défaut
     Office.context.ui.clearNotificationMessages();
-    // Votre code ici
-  }
+  
 };
 
 function sucessNotif(msg) {
