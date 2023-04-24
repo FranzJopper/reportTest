@@ -21,18 +21,7 @@ const g = getGlobal();
 
 Office.initialize = function (reason) {
   // Ajoute une notification personnalisée
-  var notification = new Office.Notification({
-     message: "Mon add-in est prêt !",
-     icon: "Icon.16x16",
-     type: Office.MailboxEnums.NotificationMessageType.InformationalMessage,
-     persistent: false
-  });
-
-  // Ferme la notification après 5 secondes
-  setTimeout(function() {
-     notification.close();
-  }, 5000);
-
+  sucessNotif("msg test test");
   // Initialise l'add-in
   // ...
 };
