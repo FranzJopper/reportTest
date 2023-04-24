@@ -127,10 +127,6 @@ function confirmationSimpleForward() {
   );
 }
 
-function test(){
-  sucessNotif("Email delete successful!");
-}
-
 function suppEmail(){
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
     //var itemId = Office.context.mailbox.item.itemId;
