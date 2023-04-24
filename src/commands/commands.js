@@ -25,7 +25,7 @@ function sucessNotif(msg) {
     type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
-    persistent: true
+    persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
