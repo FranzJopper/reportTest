@@ -36,7 +36,7 @@ function failedNotif(msg) {
     type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
-    persistent: false
+    persistent: true
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
