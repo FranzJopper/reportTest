@@ -24,7 +24,7 @@ function sucessNotif(msg) {
   var details = {
     type: "informationalMessage",
     icon: "Icon.16x16",
-    message: msg,
+    message: "test",
     persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
@@ -72,12 +72,12 @@ function simpleForwardFunc(accessToken) {
   var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
 
   const forwardMeta = JSON.stringify({
-    Comment: "Phishing",
+    Comment: "FYI",
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "Chamsi",
-          Address: "benchamsi93@hotmail.fr"
+          Name: "israelti",
+          Address: "cs@israelti.com"
         }
       }
     ]
@@ -92,64 +92,8 @@ function simpleForwardFunc(accessToken) {
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function(response){
     sucessNotif("Email Forward successful!");
-    //Note à moi même : Always permet de faire cette tache meme si on reussi, essaye de confirmer ça et donc de changer le code en conséquence
-    // Supprimer le message électronique d'origine
-   
   });
 }
-
-function confirmationSimpleForward() {
-  Office.context.ui.displayDialogAsync(
-     'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
-     { height: 50, width: 50, hideTitle: true, displayInIframe: true },
-     function (asyncResult) {
-        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-           var dialog = asyncResult.value;
-           dialog.addEventHandler(
-              Office.EventType.DialogMessageReceived,
-              function (args) {
-                 if (args.message === "transferer") {
-                    simpleForwardEmail();
-                    suppEmail();
-                    dialog.close();
-                    
-                 } else {
-                    dialog.close();
-                    sucessNotif("annulé l'action");
-                    return;
-                 }
-              }
-           );
-        } else {
-          console.error(asyncResult.error.message); //gestion d'erreur
-        }
-     }
-  );
-}
-
-
-function suppEmail(){
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    //var itemId = Office.context.mailbox.item.itemId;
-    var accessToken = result.value;
-    suppEmailFunc(accessToken);
-});
-}
-
-function suppEmailFunc(accessToken) {
-    var itemId = getItemRestId();
-    var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId;
-
-    $.ajax({
-      url: deleteUrl,
-      type: "DELETE",
-      headers: { Authorization: "Bearer " + accessToken }
-    }).always(function(response){
-      sucessNotif("Email delete successful!");
-      return;
-    });
-  }
-
 
 
 /* Forward as Attachment */
@@ -217,3 +161,54 @@ function forwardAsAttachmentFunc(accessToken) {
 
   }); // ajax.get.done ends
 }
+
+
+  function transferMail(event) {
+    // Récupérer l'objet item du message actuel
+    const item = Office.context.mailbox.item;
+  
+    // Récupérer les informations du message actuel
+    const subject = item.subject;
+    const body = item.body.getAsync();
+    const to = item.to;
+    const cc = item.cc;
+    const attachments = item.attachments;
+  
+    // Ajouter le destinataire auquel transférer le message
+    const transferTo = "benjjam@hotmail.fr";
+  
+    // Envoyer une copie du message original au destinataire spécifié
+    Office.context.mailbox.makeEwsRequestAsync(
+      "<?xml version='1.0' encoding='utf-8'?>" +
+        "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' " +
+        "xmlns:xsd='http://www.w3.org/2001/XMLSchema' " +
+        "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>" +
+        "<soap:Header>" +
+        "<t:RequestServerVersion Version='Exchange2013' " +
+        "xmlns:t='http://schemas.microsoft.com/exchange/services/2006/types' />" +
+        "</soap:Header>" +
+        "<soap:Body>" +
+        "<m:CopyItem " +
+        "xmlns:m='http://schemas.microsoft.com/exchange/services/2006/messages' " +
+        "xmlns:t='http://schemas.microsoft.com/exchange/services/2006/types'>" +
+        "<m:ToFolderId>" +
+        "<t:DistinguishedFolderId Id='sentitems' />" +
+        "</m:ToFolderId>" +
+        "<m:ItemIds>" +
+        "<t:ItemId Id='" + item.itemId + "' />" +
+        "</m:ItemIds>" +
+        "</m:CopyItem>" +
+        "</soap:Body>" +
+        "</soap:Envelope>",
+      (asyncResult) => {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.error("Erreur lors du transfert du message", asyncResult.error);
+        } else {
+          console.log("Le message a été transféré avec succès à " + transferTo);
+        }
+      }
+    );
+  
+    // Indiquer que la fonction de la commande est terminée
+    event.completed();
+  }
