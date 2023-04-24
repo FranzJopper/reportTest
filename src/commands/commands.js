@@ -117,8 +117,23 @@ function confirmationSimpleForward() {
                  } else {
                     dialog.close();
                     sucessNotif("annulé l'action");
-                    Office.context.ui.clearNotificationMessages();
-                    
+                    Office.context.mailbox.item.notificationMessages.getAsync(function (asyncResult) {
+                      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                         var notifications = asyncResult.value;
+                         for (var i = 0; i < notifications.length; i++) {
+                            Office.context.mailbox.item.notificationMessages.removeAsync(notifications[i].key, function (result) {
+                               if (result.status === Office.AsyncResultStatus.Succeeded) {
+                                  console.log("Notification supprimée avec succès !");
+                               } else {
+                                  console.error(result.error.message);
+                               }
+                            });
+                         }
+                      } else {
+                         console.error(asyncResult.error.message);
+                      }
+                   });
+                   sucessNotif("annulé l'action");
                  }
               }
            );
