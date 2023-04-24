@@ -28,6 +28,7 @@ function sucessNotif(msg) {
     persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
+  Office.context.mailbox.item.notificationMessages.removeAsync(id);
 }
 
 function failedNotif(msg) {
@@ -39,6 +40,7 @@ function failedNotif(msg) {
     persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
+  Office.context.mailbox.item.notificationMessages.removeAsync(id);
 }
 
 function getItemRestId() {
