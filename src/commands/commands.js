@@ -116,7 +116,7 @@ function confirmationSimpleForward() {
                  } else {
                     dialog.close();
                     sucessNotif("annulé l'action");
-
+                    
                  }
               }
            );
@@ -126,6 +126,7 @@ function confirmationSimpleForward() {
      }
   );
 }
+
 
 function suppEmail(){
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
@@ -153,6 +154,8 @@ function suppEmailFunc(accessToken) {
       
     });
   }
+
+
 
 /* Forward as Attachment */
 function forwardAsAttachment(){
