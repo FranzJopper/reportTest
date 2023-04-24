@@ -112,12 +112,13 @@ function confirmationSimpleForward() {
                     simpleForwardEmail();
                     suppEmail();
                     dialog.close();
-                    Office.context.ui.closeContainer();
+                    
+
                     
                  } else {
                     dialog.close();
-                    sucessNotif("annulé l'action");
-                    Office.context.ui.closeContainer();
+                    sucessNotif("annulé l'action 2");
+                    
                  }
               }
            );
