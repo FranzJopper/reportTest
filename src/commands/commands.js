@@ -141,7 +141,7 @@ function suppEmailFunc(accessToken) {
     var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/move";
     const deleteMeta = JSON.stringify({
       "DestinationId": "DeletedItems"
-    })
+    });
     $.ajax({
       url: deleteUrl,
       type: "POST",
