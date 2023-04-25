@@ -23,7 +23,7 @@ const g = getGlobal();
 function sucessNotif(msg) {
   var id = "0";
   var details = {
-    type: "ProgressIndicator",
+    type: "progressIndicator",
     icon: "Icon.16x16",
     message: msg,
     persistent: true
@@ -128,6 +128,7 @@ function confirmationSimpleForward() {
         }
      }
   );
+  //Office.context.ui.closeContainer();
 }
 
 
