@@ -26,7 +26,7 @@ function sucessNotif(msg) {
     type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
-    persistent: true
+    persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
@@ -37,7 +37,7 @@ function failedNotif(msg) {
     type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
-    persistent: true
+    persistent: false
   };
   Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
@@ -100,7 +100,7 @@ function simpleForwardFunc(accessToken) {
 }
 
 function test(){
-  sucessNotif("bonjour");
+  sucessNotif("bonjour 5");
 }
 
 function confirmationSimpleForward() {
