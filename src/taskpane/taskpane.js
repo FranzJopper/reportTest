@@ -10,16 +10,21 @@ import "../../assets/icon-80.png";
 
 /* global document, Office */
 
-Office.onReady(info => {
+/*Office.onReady( () => {
   if (info.host === Office.HostType.Outlook) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("run").onclick = run;
   }
+});*/
+
+Office.onReady(() => {
+  // If needed, Office.js is ready to be called
 });
 
-export async function run() {
+/*export async function run() {
   /**
    * Insert your Outlook code here
-   */
+   
 }
+*/
