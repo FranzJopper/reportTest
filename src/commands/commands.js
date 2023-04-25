@@ -23,7 +23,7 @@ const g = getGlobal();
 function sucessNotif(msg) {
   var id = "0";
   var details = {
-    type: "informationalMessage",
+    type: "progressIndicator",
     icon: "Icon.16x16",
     message: msg,
     persistent: true
@@ -99,6 +99,10 @@ function simpleForwardFunc(accessToken) {
   });
 }
 
+function test(){
+  sucessNotif("bonjour");
+}
+
 function confirmationSimpleForward() {
   Office.context.ui.displayDialogAsync(
      'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
@@ -119,7 +123,7 @@ function confirmationSimpleForward() {
                  } else {
                     dialog.close();
                     
-                    sucessNotif("annulé l'action 4");
+                    sucessNotif("annulé l'action 2");
                     
                  }
               }
@@ -129,7 +133,7 @@ function confirmationSimpleForward() {
         }
      }
   );
-  Office.context.ui.closeContainer();
+
 }
 
 
