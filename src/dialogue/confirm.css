@@ -1,0 +1,39 @@
+h2{
+    color:#0078D7;
+    font-family: 'Segoe UI Semilight WestEuropean','Segoe UI Semilight','Segoe UI',Tahoma,Arial,sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  
+  #oui{
+      background-color: #0078d7;
+      color: white;
+      font-family: 'Segoe UI Regular WestEuropean','Segoe UI',Tahoma,Arial,sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 0;
+      box-shadow: none;
+      border: 1px solid #f4f4f4;
+      cursor: pointer;
+      height: 32px;
+      min-width: 80px;
+      padding: 4px 20px 6px;
+  }
+  
+  #non{
+      color: #333;
+      font-family: 'Segoe UI Semibold WestEuropean','Segoe UI Semibold','Segoe UI',Tahoma,Arial,sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 0;
+      box-shadow: none;
+      background-color: #f4f4f4;
+      border: 1px solid #f4f4f4;
+      cursor: pointer;
+      height: 32px;
+      min-width: 80px;
+      padding: 4px 20px 6px;
+      position: relative;
+      left: 30px
+  }
+  
