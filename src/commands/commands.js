@@ -77,8 +77,8 @@ function simpleForwardFunc(accessToken) {
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "Chamsi",
-          Address: "benchamsi93@hotmail.fr"
+          Name: "GROUPE POMONA CYBER-DEFENSE",
+          Address: "cyber-defense@groupe-pomona.fr"
         }
       }
     ]
