@@ -39,9 +39,7 @@ h2{
   
   img {
     position: absolute;
-    bottom: 67%;
+    bottom: 50%;
     left: 10%;
     transform: translateX(-50%);
-    width: 15%;
-    height: 15%;
   }
