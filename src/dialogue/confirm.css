@@ -37,9 +37,11 @@ h2{
       left: 30px
   }
   
-  img {
-    position: absolute;
-    bottom: 50%;
-    left: 10%;
+  .image {
+    position: relative;
+    top: 60px;
+    right: 70px;
     transform: translateX(-50%);
+    height: 30%;
+    width: 30%;
   }
