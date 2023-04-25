@@ -99,11 +99,12 @@ function simpleForwardFunc(accessToken) {
   });
 }
 
-function test(){
-  sucessNotif("bonjour 7");
+function test(event){
+  sucessNotif("bonjour 1");
+  event.completed();
 }
 
-function confirmationSimpleForward() {
+function confirmationSimpleForward(event) {
   Office.context.ui.displayDialogAsync(
      'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
      { height: 50, width: 50, hideTitle: true, displayInIframe: true },
@@ -133,7 +134,7 @@ function confirmationSimpleForward() {
         }
      }
   );
-
+  event.completed();   
 }
 
 
