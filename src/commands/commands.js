@@ -119,7 +119,7 @@ function confirmationSimpleForward() {
                  } else {
                     dialog.close();
                     
-                    sucessNotif("annulé l'action 3");
+                    sucessNotif("annulé l'action 4");
                     
                  }
               }
