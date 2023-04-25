@@ -100,7 +100,7 @@ function simpleForwardFunc(accessToken) {
 }
 
 function test(){
-  sucessNotif("bonjour 5");
+  sucessNotif("bonjour 7");
 }
 
 function confirmationSimpleForward() {
