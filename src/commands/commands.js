@@ -23,7 +23,7 @@ const g = getGlobal();
 function sucessNotif(msg) {
   var id = "0";
   var details = {
-    type: "progressIndicator",
+    type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
     persistent: true
