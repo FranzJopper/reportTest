@@ -37,3 +37,11 @@ h2{
       left: 30px
   }
   
+  img {
+    position: absolute;
+    bottom: 67%;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 15%;
+    height: 15%;
+  }

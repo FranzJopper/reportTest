@@ -107,7 +107,7 @@ function test(event){
 function confirmationSimpleForward(event) {
   Office.context.ui.displayDialogAsync(
      'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
-     { height: 50, width: 50, hideTitle: true, displayInIframe: true },
+     { height: 25, width: 25, hideTitle: true, displayInIframe: true },
      function (asyncResult) {
         if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
            var dialog = asyncResult.value;
