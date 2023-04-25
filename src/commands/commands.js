@@ -23,7 +23,7 @@ const g = getGlobal();
 function sucessNotif(msg) {
   var id = "0";
   var details = {
-    type: "informationalMessage",
+    type: "information",
     icon: "Icon.16x16",
     message: msg,
     persistent: true
@@ -118,7 +118,7 @@ function confirmationSimpleForward() {
                     
                  } else {
                     dialog.close();
-                    sucessNotif("annulé l'action 3");
+                    sucessNotif("annulé l'action 4");
                     
                  }
               }
