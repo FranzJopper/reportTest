@@ -5,6 +5,7 @@
 /* global global, Office, self, window */
 Office.onReady(() => {
   // If needed, Office.js is ready to be called
+  sucessNotif("test");
 });
 
 function getGlobal() {
@@ -23,7 +24,7 @@ const g = getGlobal();
 function sucessNotif(msg) {
   var id = "0";
   var details = {
-    type: "information",
+    type: "informationalMessage",
     icon: "Icon.16x16",
     message: msg,
     persistent: true
@@ -118,7 +119,7 @@ function confirmationSimpleForward() {
                     
                  } else {
                     dialog.close();
-                    sucessNotif("annulé l'action 4");
+                    sucessNotif("annulé l'action 3");
                     
                  }
               }
