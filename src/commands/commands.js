@@ -124,7 +124,7 @@ function confirmationSimpleForward(event) {
                  } else {
                     dialog.close();
                     
-                    sucessNotif("annulé l'action 2");
+                    sucessNotif("annulé l'action 5");
                     
                  }
               }
