@@ -73,7 +73,7 @@ function simpleForwardFunc(accessToken) {
   var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
 
   const forwardMeta = JSON.stringify({
-    Comment: "Phishing",
+    Comment: "Suspicion d'email de phishing, à investiguer.",
     ToRecipients: [
       {
         EmailAddress: {
@@ -93,15 +93,9 @@ function simpleForwardFunc(accessToken) {
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function(response){
     sucessNotif("Email Forward successful!");
-    //Note à moi même : Always permet de faire cette tache meme si on reussi, essaye de confirmer ça et donc de changer le code en conséquence
     // Supprimer le message électronique d'origine
    
   });
-}
-
-function test(event){
-  sucessNotif("bonjour 1");
-  event.completed();
 }
 
 function confirmationSimpleForward(event) {
@@ -118,13 +112,10 @@ function confirmationSimpleForward(event) {
                     simpleForwardEmail();
                     suppEmail();
                     dialog.close();
-                    
-
-                    
+    
                  } else {
                     dialog.close();
                     
-                    sucessNotif("annulé l'action 5");
                     
                  }
               }
@@ -160,7 +151,7 @@ function suppEmailFunc(accessToken) {
       data: deleteMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function(response){
-      sucessNotif("Email delete successful!");
+      sucessNotif("Email transmit à l'équipe Cyber-defense");
       
     });
   }
@@ -168,67 +159,3 @@ function suppEmailFunc(accessToken) {
 
 
 /* Forward as Attachment */
-function forwardAsAttachment(){
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
-    var ewsId = Office.context.mailbox.item.itemId;
-    var accessToken = result.value;
-    forwardAsAttachmentFunc(accessToken);
-  });
-}
-
-function forwardAsAttachmentFunc(accessToken) {
-  var itemId = getItemRestId();
-  var getAnItemUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId;
-  var sendItemUrl = Office.context.mailbox.restUrl + "/v1.0/me/sendmail";
-
-  $.ajax({
-    url: getAnItemUrl,
-    type: "GET",
-    contentType: "application/json",
-    headers: { Authorization: "Bearer " + accessToken }
-  }).done(function (responseItem) {
-    // #microsoft.graph.message
-    // microsoft.graph.outlookItem
-    responseItem['@odata.type'] = "#microsoft.graph.message";
-    
-    /* Now send mail */
-    const sendMeta = JSON.stringify({
-      "Message": {
-        "Subject": "Please Check for Phish Activities!",
-        "Body": {
-          "ContentType": "Text",
-          "Content": "Please Check for Phish Activities and let us know!"
-        },
-        "ToRecipients": [{
-          "EmailAddress": {
-            "Address": "benjjam@hotmail.fr"
-          }
-        }],
-        "Attachments": [
-          {
-            "@odata.type": "#Microsoft.OutlookServices.ItemAttachment",
-            // #Microsoft.OutlookServices.ItemAttachment - worked with graph explorer
-            // #Microsoft.graph.ItemAttachment - from stack overfloow
-            "Name": responseItem.Subject,
-            "Item": responseItem
-          }
-        ]
-      },
-      "SaveToSentItems": "false"
-    }); // Json.stringify ends
-
-    $.ajax({
-      url: sendItemUrl,
-      type: "POST",
-      dataType: "json",
-      contentType: "application/json",
-      data: sendMeta,
-      headers: { Authorization: "Bearer " + accessToken }
-    }).done(function (response) {
-      sucessNotif("Email forward as attachment successful!");
-    }).fail(function(response){
-      failedNotif(response);
-    }); // ajax of send mail ends
-
-  }); // ajax.get.done ends
-}
