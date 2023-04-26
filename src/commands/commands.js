@@ -66,13 +66,44 @@ function simpleForwardEmail() {
 
 function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
-
+  var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId
   // Construct the REST URL to the current item.
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
-  var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
+
+  var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
+
+  $.ajax({
+    url: createUrl,
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json",
+    headers: { Authorization: "Bearer " + accessToken }
+  }).always(function(response){
+    sucessNotif("Creation d'un brouillon de transfere");
+   
+  });
+
+  const patchMeta = JSON.stringify({
+    "subject" : "nouveau_sujet"
+   });
+
+  $.ajax({
+    url: updateUrl,
+    type: "PATCH",
+    dataType: "json",
+    contentType: "application/json",
+    data : patchMeta,
+    headers: { Authorization: "Bearer " + accessToken }
+  }).always(function(response){
+    sucessNotif("update");
+
+  });
+
+  /*var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
 
   const forwardMeta = JSON.stringify({
+    
     Comment: "Suspicion d'email de phishing, à investiguer.",
     ToRecipients: [
       {
@@ -84,7 +115,7 @@ function simpleForwardFunc(accessToken) {
     ]
   });
 
-  $.ajax({
+$.ajax({
     url: forwardUrl,
     type: "POST",
     dataType: "json",
@@ -96,6 +127,7 @@ function simpleForwardFunc(accessToken) {
     // Supprimer le message électronique d'origine
    
   });
+  */
 }
 
 function confirmationSimpleForward(event) {
