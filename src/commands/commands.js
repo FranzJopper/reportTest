@@ -83,13 +83,9 @@ function simpleForwardFunc(accessToken) {
     var forwardItemId = response.id;
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
-
-
     const patchMeta = JSON.stringify({
       "subject": "Nouveau sujet du message transféré"
     });
-
-
 
     $.ajax({
       url: updateUrl,
@@ -101,7 +97,7 @@ function simpleForwardFunc(accessToken) {
     }).done(function (response) {
       sucessNotif("Sujet du message transféré modifié avec succès");
     }).fail(function (error) {
-      console.log(error);
+      failedNotif("error");
     });
 
 
