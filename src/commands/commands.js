@@ -142,7 +142,7 @@ function confirmationSimpleForward(event) {
               function (args) {
                  if (args.message === "transferer") {
                     simpleForwardEmail();
-                    suppEmail();
+                    //suppEmail();
                     dialog.close();
     
                  } else {
