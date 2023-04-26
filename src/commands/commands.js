@@ -71,7 +71,7 @@ function simpleForwardFunc(accessToken) {
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
 
-  //var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
+  var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
 
   /*$.ajax({
     url: createUrl,
@@ -82,25 +82,25 @@ function simpleForwardFunc(accessToken) {
   }).always(function (response) {
 
 
-  });
-*/
-  var forwardItemId = itemId;
-  var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
+  });*/
 
-  const patchMeta = JSON.stringify({
-    "subject": "Nouveau sujet du message transféré"
-  });
+    var forwardItemId = itemId;
+    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
-  $.ajax({
-    url: updateUrl,
-    type: "PATCH",
-    dataType: "json",
-    contentType: "application/json",
-    data: patchMeta,
-    headers: { Authorization: "Bearer " + accessToken }
-  }).always(function (response) {
-    sucessNotif("test");
-  })
+    const patchMeta = JSON.stringify({
+      "subject": "Nouveau sujet du message transféré"
+    });
+
+    $.ajax({
+      url: updateUrl,
+      type: "PATCH",
+      dataType: "json",
+      contentType: "application/json",
+      data: patchMeta,
+      headers: { Authorization: "Bearer " + accessToken }
+    }).always(function (response) {
+      sucessNotif("Sujet du message transféré modifié avec succès");
+    });
 
 
 
