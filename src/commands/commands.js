@@ -116,7 +116,7 @@ function simpleForwardFunc2(accessToken) {
   }).always(function (response) {
 
     var forwardItemId = response.id;
-    sucessNotif("Sujet du message transféré modifié avec succès 10 : ");
+    //sucessNotif("Sujet du message transféré modifié avec succès 10 : ");
     
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
