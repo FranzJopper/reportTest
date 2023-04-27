@@ -98,7 +98,7 @@ function simpleForwardFunc(accessToken) {
   });
 }
 
-function simpleForwardFun2(accessToken) {
+function simpleForwardFunc2(accessToken) {
   var itemId = getItemRestId();
   
   // Construct the REST URL to the current item.
