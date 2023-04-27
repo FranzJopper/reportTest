@@ -114,6 +114,7 @@ function simpleForwardFun2(accessToken) {
     contentType: "application/json",
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function (response) {
+    sucessNotif("Sujet du message transféré modifié avec succès 1");
     var forwardItemId = response.id;
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
