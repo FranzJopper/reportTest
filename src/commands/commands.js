@@ -146,8 +146,6 @@ function simpleForwardFunc(accessToken) {
       $.ajax({
         url: sendUrl,
         type: "POST",
-        dataType: "json",
-        contentType: "application/json",
         headers: { Authorization: "Bearer " + accessToken }
       }).done(function(response){
         suppEmail();
