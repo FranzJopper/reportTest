@@ -60,11 +60,11 @@ function simpleForwardEmail() {
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
     var ewsId = Office.context.mailbox.item.itemId;
     var accessToken = result.value;
-    simpleForwardFunc2(accessToken);
+    simpleForwardFunc(accessToken);
   });
 }
 
-function simpleForwardFunc(accessToken) {
+/*function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
 
   // Construct the REST URL to the current item.
@@ -96,9 +96,9 @@ function simpleForwardFunc(accessToken) {
     // Supprimer le message électronique d'origine
    
   });
-}
+}*/
 
-function simpleForwardFunc2(accessToken) {
+function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
   
   // Construct the REST URL to the current item.
@@ -150,7 +150,8 @@ function simpleForwardFunc2(accessToken) {
         contentType: "application/json",
         headers: { Authorization: "Bearer " + accessToken }
       }).always(function (response){
-        sucessNotif("email transféré");
+       // sucessNotif("email transféré");
+        suppEmail();
       })
 
     });
