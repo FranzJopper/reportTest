@@ -132,7 +132,7 @@ function simpleForwardFunc2(accessToken) {
       data: patchMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function (response) {
-      sucessNotif("Sujet du message transféré modifié avec succès 5");
+      sucessNotif("Sujet du message transféré modifié avec succèss 5");
     });
   });
 
