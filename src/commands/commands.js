@@ -139,10 +139,19 @@ function simpleForwardFunc2(accessToken) {
       data: patchMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function (response) {
-      sucessNotif("Sujet du message transféré modifié avec succèss 99");
+      //sucessNotif("Sujet du message transféré modifié avec succèss 99");
 
-      var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId
+      var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId + "send"
 
+      $.ajax({
+        url: sendUrl,
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        headers: { Authorization: "Bearer " + accessToken }
+      }).always(function (response){
+        sucessNotif("email transféré");
+      })
 
     });
   });
