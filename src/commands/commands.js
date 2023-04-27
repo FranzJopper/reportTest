@@ -141,7 +141,7 @@ function simpleForwardFunc2(accessToken) {
     }).always(function (response) {
       //sucessNotif("Sujet du message transféré modifié avec succèss 99");
 
-      var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId + "send"
+      var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId + "/send"
 
       $.ajax({
         url: sendUrl,
