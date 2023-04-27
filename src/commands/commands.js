@@ -114,15 +114,11 @@ function simpleForwardFun2(accessToken) {
     contentType: "application/json",
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function (response) {
-    var forwardItemId = getItemRestId();
+    var forwardItemId = response.id;
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
     const patchMeta = JSON.stringify({
-      "subject": "Nouveau sujet du message transféré",
-      "body" : {
-        "contentType" : "text",
-        "content" : "Please Check for Phish Activities and let us know!"
-      }
+      "subject": "Nouveau sujet du message transféré"
     });
 
     $.ajax({
@@ -133,7 +129,7 @@ function simpleForwardFun2(accessToken) {
       data: patchMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).always(function (response) {
-      sucessNotif("Sujet du message transféré modifié avec succès 5");
+      sucessNotif("Sujet du message transféré modifié avec succès 2");
     });
   });
 
