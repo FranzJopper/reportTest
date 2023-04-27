@@ -11,10 +11,10 @@ function getGlobal() {
   return typeof self !== "undefined"
     ? self
     : typeof window !== "undefined"
-      ? window
-      : typeof global !== "undefined"
-        ? global
-        : undefined;
+    ? window
+    : typeof global !== "undefined"
+    ? global
+    : undefined;
 }
 
 const g = getGlobal();
@@ -28,7 +28,7 @@ function sucessNotif(msg) {
     message: msg,
     persistent: false
   };
-  Office.context.mailbox.item.notificationMessages.addAsync(id, details, function (value) { });
+  Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
 
 function failedNotif(msg) {
@@ -39,7 +39,7 @@ function failedNotif(msg) {
     message: msg,
     persistent: false
   };
-  Office.context.mailbox.item.notificationMessages.addAsync(id, details, function (value) { });
+  Office.context.mailbox.item.notificationMessages.addAsync(id, details, function(value) {});
 }
 
 function getItemRestId() {
@@ -57,70 +57,34 @@ function getItemRestId() {
 
 /* Simple Forward */
 function simpleForwardEmail() {
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
+  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
     var ewsId = Office.context.mailbox.item.itemId;
     var accessToken = result.value;
-    simpleForwardFunc(accessToken);
+    simpleForwardFunc2(accessToken);
   });
 }
 
 function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
-  var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId
+
   // Construct the REST URL to the current item.
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
-
-  var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
-
-  /*$.ajax({
-    url: createUrl,
-    type: "POST",
-    dataType: "json",
-    contentType: "application/json",
-    headers: { Authorization: "Bearer " + accessToken }
-  }).always(function (response) {
-
-
-  });*/
-
-    var forwardItemId = itemId;
-    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
-
-    const patchMeta = JSON.stringify({
-      "subject": "Nouveau sujet du message transféré"
-    });
-
-    $.ajax({
-      url: updateUrl,
-      type: "PATCH",
-      dataType: "json",
-      contentType: "application/json",
-      data: patchMeta,
-      headers: { Authorization: "Bearer " + accessToken }
-    }).always(function (response) {
-      sucessNotif("Sujet du message transféré modifié avec succès");
-    });
-
-
-
-
-  /*var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
+  var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
 
   const forwardMeta = JSON.stringify({
-    
     Comment: "Suspicion d'email de phishing, à investiguer.",
     ToRecipients: [
       {
         EmailAddress: {
-          Name: "chamsi",
+          Name: "Chamsi",
           Address: "benchamsi93@hotmail.fr"
         }
       }
     ]
   });
 
-$.ajax({
+  $.ajax({
     url: forwardUrl,
     type: "POST",
     dataType: "json",
@@ -132,66 +96,109 @@ $.ajax({
     // Supprimer le message électronique d'origine
    
   });
-  */
 }
 
-function confirmationSimpleForward(event) {
-  Office.context.ui.displayDialogAsync(
-    'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
-    { height: 25, width: 25, hideTitle: true, displayInIframe: true },
-    function (asyncResult) {
-      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-        var dialog = asyncResult.value;
-        dialog.addEventHandler(
-          Office.EventType.DialogMessageReceived,
-          function (args) {
-            if (args.message === "transferer") {
-              simpleForwardEmail();
-              //suppEmail();
-              dialog.close();
-
-            } else {
-              dialog.close();
-
-
-            }
-          }
-        );
-      } else {
-        console.error(asyncResult.error.message); //gestion d'erreur
-      }
-    }
-  );
-  event.completed();
-}
-
-
-function suppEmail() {
-  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
-    //var itemId = Office.context.mailbox.item.itemId;
-    var accessToken = result.value;
-    suppEmailFunc(accessToken);
-  });
-}
-
-function suppEmailFunc(accessToken) {
+function simpleForwardFun2(accessToken) {
   var itemId = getItemRestId();
-  var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/move";
-  const deleteMeta = JSON.stringify({
-    "DestinationId": "DeletedItems"
-  });
+  
+  // Construct the REST URL to the current item.
+  // Details for formatting the URL can be found at
+  // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
+
+  var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
+
   $.ajax({
-    url: deleteUrl,
+    url: createUrl,
     type: "POST",
     dataType: "json",
     contentType: "application/json",
-    data: deleteMeta,
     headers: { Authorization: "Bearer " + accessToken }
   }).always(function (response) {
-    sucessNotif("Email transmit à l'équipe Cyber-defense");
+    var forwardItemId = getItemRestId();
+    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
+    const patchMeta = JSON.stringify({
+      "subject": "Nouveau sujet du message transféré",
+      "body" : {
+        "contentType" : "text",
+        "content" : "Please Check for Phish Activities and let us know!"
+      }
+    });
+
+    $.ajax({
+      url: updateUrl,
+      type: "PATCH",
+      dataType: "json",
+      contentType: "application/json",
+      data: patchMeta,
+      headers: { Authorization: "Bearer " + accessToken }
+    }).always(function (response) {
+      sucessNotif("Sujet du message transféré modifié avec succès 5");
+    });
   });
+
+    
+
 }
+
+
+function confirmationSimpleForward(event) {
+  Office.context.ui.displayDialogAsync(
+     'https://franzjopper.github.io/reportTest/src/dialogue/confirm-dialog.html',
+     { height: 25, width: 25, hideTitle: true, displayInIframe: true },
+     function (asyncResult) {
+        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+           var dialog = asyncResult.value;
+           dialog.addEventHandler(
+              Office.EventType.DialogMessageReceived,
+              function (args) {
+                 if (args.message === "transferer") {
+                    simpleForwardEmail();
+                    //suppEmail();
+                    dialog.close();
+    
+                 } else {
+                    dialog.close();
+                    
+                    
+                 }
+              }
+           );
+        } else {
+          console.error(asyncResult.error.message); //gestion d'erreur
+        }
+     }
+  );
+  event.completed();   
+}
+
+
+function suppEmail(){
+  Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function(result) {
+    //var itemId = Office.context.mailbox.item.itemId;
+    var accessToken = result.value;
+    suppEmailFunc(accessToken);
+});
+}
+
+function suppEmailFunc(accessToken) {
+    var itemId = getItemRestId();
+    var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/move";
+    const deleteMeta = JSON.stringify({
+      "DestinationId": "DeletedItems"
+    });
+    $.ajax({
+      url: deleteUrl,
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: deleteMeta,
+      headers: { Authorization: "Bearer " + accessToken }
+    }).always(function(response){
+      sucessNotif("Email transmit à l'équipe Cyber-defense");
+      
+    });
+  }
 
 
 
