@@ -113,7 +113,7 @@ function simpleForwardFunc(accessToken) {
     dataType: "json",
     contentType: "application/json",
     headers: { Authorization: "Bearer " + accessToken }
-  }).always(function (response) {
+  }).done(function (response) {
 
     var forwardItemId = response.Id;
     //sucessNotif("Sujet du message transféré modifié avec succès 10 : ");
@@ -138,7 +138,7 @@ function simpleForwardFunc(accessToken) {
       contentType: "application/json",
       data: patchMeta,
       headers: { Authorization: "Bearer " + accessToken }
-    }).always(function (response) {
+    }).done(function (response) {
       //sucessNotif("Sujet du message transféré modifié avec succèss 99");
 
       var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId + "/send"
@@ -149,14 +149,19 @@ function simpleForwardFunc(accessToken) {
         dataType: "json",
         contentType: "application/json",
         headers: { Authorization: "Bearer " + accessToken }
-      }).always(function (response){
-       // sucessNotif("email transféré");
+      }).done(function(response){
         suppEmail();
-      })
+        
+      }).fail(function(response){
+        failedNotif("Erreur lors de l'envois de votre email!");
+      });
 
+    }).fail(function(response){
+      failedNotif("Erreur lors du changement de destinataire et du sujet de votre email!");
     });
+  }).fail(function(response){
+    failedNotif("Erreur lors de la création du brouillon!");
   });
-
     
 
 }
@@ -214,9 +219,11 @@ function suppEmailFunc(accessToken) {
       contentType: "application/json",
       data: deleteMeta,
       headers: { Authorization: "Bearer " + accessToken }
-    }).always(function(response){
+    }).done(function(response){
       sucessNotif("Email transmit à l'équipe Cyber-defense");
       
+    }).fail(function(response){
+      failedNotif("Erreur lors du supression de votre email!");
     });
   }
 
