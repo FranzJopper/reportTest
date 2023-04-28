@@ -12,6 +12,32 @@
    <button id="oui">Oui</button>
    <button id="non">Non</button>
    <script type="text/javascript">
+      // Obtenir la langue de l'utilisateur      
+      var language = Office.context.displayLanguage;
+
+      // Obtenir l'URL du fichier de ressources pour la langue de l'utilisateur
+      var resourceUrl = 'https://franzjopper.github.io/reportTest/src/dialogue/strings.' + language + '.json';
+
+      // Charger le fichier de ressources
+      $.getJSON(resourceUrl, function(data) {
+
+         // Traduire le texte des boutons
+         var yesText = data.yes;
+         $('#oui').text(yesText);
+         var noText = data.no;
+         $('#non').text(noText);
+
+         // Traduire le texte du titre de la page
+         var pageTitleText = data.pageTitle;
+         $('title').text(pageTitleText);
+
+         // Traduire le texte de l'en-tête de la page
+         var headerText = data.header;
+         $('h2').text(headerText);
+
+      });
+
+   
       document.getElementById("oui").addEventListener("click", function () {
          Office.context.ui.messageParent("transferer");
       });
