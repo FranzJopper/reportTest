@@ -105,6 +105,11 @@ function simpleForwardFunc(accessToken) {
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
 
+
+
+  
+
+
   var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
 
   $.ajax({
@@ -121,7 +126,7 @@ function simpleForwardFunc(accessToken) {
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
     const patchMeta = JSON.stringify({
-      "Subject": "Phishing",
+      "Subject": "[Phishing] " + response.Subject,
       "ToRecipients": [
         {
           "EmailAddress": {
