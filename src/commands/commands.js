@@ -66,12 +66,10 @@ function simpleForwardEmail() {
 
 /*function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
-
   // Construct the REST URL to the current item.
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
   var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
-
   const forwardMeta = JSON.stringify({
     Comment: "Suspicion d'email de phishing, à investiguer.",
     ToRecipients: [
@@ -83,7 +81,6 @@ function simpleForwardEmail() {
       }
     ]
   });
-
   $.ajax({
     url: forwardUrl,
     type: "POST",
@@ -105,11 +102,6 @@ function simpleForwardFunc(accessToken) {
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
 
-
-
-  
-
-
   var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
 
   $.ajax({
@@ -122,11 +114,11 @@ function simpleForwardFunc(accessToken) {
 
     var forwardItemId = response.Id;
     //sucessNotif("Sujet du message transféré modifié avec succès 10 : ");
-    
+    var language = Office.context.displayLanguage;
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
     const patchMeta = JSON.stringify({
-      "Subject": "[Phishing] " + response.Subject,
+      "Subject": "[Phishing] - " + language + " "+ response.Subject,
       "ToRecipients": [
         {
           "EmailAddress": {
@@ -230,6 +222,3 @@ function suppEmailFunc(accessToken) {
     });
   }
 
-
-
-/* Forward as Attachment */
