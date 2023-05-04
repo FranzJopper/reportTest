@@ -14,12 +14,11 @@
    <script type="text/javascript">
       
 
-      Office.onReady() = function(){
+      Office.onReady(function(){
         var language = Office.context.displayLanguage;
         var but = document.getElementById('texte');
         but.innerText= language +" test";
-      };
-      
+      });
       
       document.getElementById("oui").addEventListener("click", function () {
          Office.context.ui.messageParent("transferer");
