@@ -14,9 +14,11 @@
    <script type="text/javascript">
       
 
-      var language = Office.context.displayLanguage;
-      var but = document.getElementById('texte');
-      but.innerText= language;
+      Office.initialize = function(reason){
+        var language = Office.context.displayLanguage;
+        var but = document.getElementById('texte');
+        but.innerText= language;
+      };
       
       
       document.getElementById("oui").addEventListener("click", function () {
