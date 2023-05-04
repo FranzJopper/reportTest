@@ -8,20 +8,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 <body>
-   <h2>Voulez-vous signaler cet email en tant que phishing auprès de l'équipe Cyber-defense 5 ?</h2>
+   <h2 id="texte">Voulez-vous signaler cet email en tant que phishing auprès de l'équipe Cyber-defense ?</h2>
    <button id="oui">Oui</button>
    <button id="non">Non</button>
    <script type="text/javascript">
-      // Obtenir la langue de l'utilisateur      
-      //var language = Office.context.displayLanguage;
-
-      // Obtenir l'URL du fichier de ressources pour la langue de l'utilisateur
-      //var resourceUrl = 'https://franzjopper.github.io/reportTest/src/dialogue/string.' + language + '.json';
       
-      var but = document.getElementById('h1');
+      var but = document.getElementById('texte');
       but.innerText='bonjour';
 
-   
+      
       document.getElementById("oui").addEventListener("click", function () {
          Office.context.ui.messageParent("transferer");
       });
@@ -33,3 +28,4 @@
    <img class="image" src="pomona.png">
 </body>
 </html>
+
