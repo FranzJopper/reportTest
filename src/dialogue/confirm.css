@@ -10,13 +10,14 @@ h2{
     font-size: 10px;
     font-weight: 400;
     position: relative;
-    top: 80px;
+    top: 120px;
     right: 70px;
     
   }
   #oui{
       background-color: #0078d7;
       color: white;
+      position: relative;
       font-family: 'Segoe UI Regular WestEuropean','Segoe UI',Tahoma,Arial,sans-serif;
       font-size: 14px;
       box-sizing: border-box;
@@ -34,6 +35,7 @@ h2{
       font-family: 'Segoe UI Semibold WestEuropean','Segoe UI Semibold','Segoe UI',Tahoma,Arial,sans-serif;
       font-size: 14px;
       box-sizing: border-box;
+      position: relative;
       margin: 0;
       box-shadow: none;
       background-color: #f4f4f4;
