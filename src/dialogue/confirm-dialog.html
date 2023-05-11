@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 <body>
-   <h2 id="texte">Voulez-vous signaler cet email en tant que phishing auprès de l'équipe Cyber-defense 255 ?</h2>
+   <h2 id="texte">Voulez-vous signaler cet email en tant que phishing auprès de l'équipe Cyber-defense ?</h2>
    <p id="notice">En cliquant sur "Oui", l'email sélectionné est transmis à l'équipe cyber-défense puis supprimé automatiquement de vos emails dans un court délai.</p>
    <button id="oui">Oui</button>
    <button id="non">Non</button>
@@ -37,6 +37,9 @@
          // Traduire le texte de l'en-tête de la page
          var headerText = data.message;
          $('#texte').text(headerText);
+
+         var noticeText = data.notice;
+         $('#notice').text(noticeText);
 
       });
       });

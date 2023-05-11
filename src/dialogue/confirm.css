@@ -29,7 +29,7 @@ h2{
       min-width: 80px;
       padding: 4px 20px 6px;
       position: relative;
-      bottom: 55px;
+      bottom: 35px;
   }
   
   #non{
@@ -47,13 +47,13 @@ h2{
       padding: 4px 20px 6px;
       position: relative;
       left: 20px;
-      bottom: 55px;
+      bottom: 35px;
   }
   
   .image {
-    top: 60px;
+    top: 70px;
     right: 180px;
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 80px;
     position: relative;
   }
