@@ -115,6 +115,21 @@ function simpleForwardFunc(accessToken) {
     var forwardItemId = response.Id;
     //sucessNotif("Sujet du message transféré modifié avec succès 10 : ");
     var language = Office.context.displayLanguage;
+    var err1 = "Erreur lors de l'envois de votre email!";
+    var err2 = "Erreur lors du changement de destinataire et du sujet de votre email!";
+    var err3 = "Erreur lors de la création du brouillon!";
+
+    if (language==="de-DE"){
+      err1 = "Fehler beim Senden Ihrer E-Mail!"
+      err2 = "Fehler beim Ändern des Empfängers und des Betreffs Ihrer E-Mail!"
+      err3 = "Fehler beim Erstellen des Entwurfes!"
+    }
+    if (language==="es-ES"){
+      err1 = "¡Error al enviar su correo electrónico!"
+      err2 = "¡Error al cambiar el destinatario y el asunto de su correo electrónico!"
+      err3 = "¡Error al crear el borrador!"
+    }
+
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
 
     const patchMeta = JSON.stringify({
@@ -148,14 +163,14 @@ function simpleForwardFunc(accessToken) {
         suppEmail();
         
       }).fail(function(response){
-        failedNotif("Erreur lors de l'envois de votre email!");
+        failedNotif(err1);
       });
 
     }).fail(function(response){
-      failedNotif("Erreur lors du changement de destinataire et du sujet de votre email!");
+      failedNotif(err2);
     });
   }).fail(function(response){
-    failedNotif("Erreur lors de la création du brouillon!");
+    failedNotif(err3);
   });
     
 
@@ -221,4 +236,3 @@ function suppEmailFunc(accessToken) {
       failedNotif("Erreur lors du supression de votre email!");
     });
   }
-
