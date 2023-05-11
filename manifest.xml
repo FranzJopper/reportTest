@@ -2,12 +2,18 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>c7013a9f-c40c-4cb2-8cba-58e28f1f1542</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Ove Bepari</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Report phishing"/>
-  <Description DefaultValue="Report Phish Emails to System Admin"/>
-  <IconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icon-80.png"/>
+  <ProviderName>Pomona</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <DisplayName DefaultValue="Alerte phishing">
+    <Override Locale="de-de" Value="Phishing-Warnung"/>
+		<Override Locale="es-es" Value="Alerta de phishing"/>
+  </DisplayName>
+  <Description DefaultValue="Reporter des emails frauduleux à l'équipe Cyber-defense">
+    <Override Locale="de-DE" Value="Betrügerische E-Mails an das Cyber-Abwehrteam melden"/>
+		<Override Locale="es-es" Value="Notificación de correos electrónicos fraudulentos al equipo de Ciberdefensa"/>
+  </Description>  
+  <IconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icons32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icons80.png"/>
   <SupportUrl DefaultValue="https://franzjopper.github.io/reportTest"/>
   <AppDomains>
     <AppDomain>https://github.com/FranzJopper/reportTest</AppDomain>
@@ -84,26 +90,38 @@
     <Resources>
      
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons80.png"/>
       </bt:Images>
       
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://franzjopper.github.io/reportTest/src/commands/commands.html"/>
       </bt:Urls>
-
+       
       <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="PhishMe Add-in"/>
-        <bt:String id="ActionButton.Label" DefaultValue="report phishing"/>
-        <bt:String id="SendAttached.Label" DefaultValue="PhishIt as Attachment"/>
+        <bt:String id="GroupLabel" DefaultValue="Protection">
+          <bt:Override Locale="es-ES" Value="Protección" />
+          <bt:Override Locale="de-DE" Value="Schutz" />
+        </bt:String>
+        <bt:String id="ActionButton.Label" DefaultValue="Alerte Phishing">
+          <bt:Override Locale="es-ES" Value="Alerta de phishing" />
+          <bt:Override Locale="de-DE" Value="Phishing-Warnung" />
+        </bt:String>
       </bt:ShortStrings>
-
+      
       <bt:LongStrings>
-        <bt:String id="ActionButton.Tooltip" DefaultValue="Phish this email to sysadmin"/>
-        <bt:String id="SendAttached.Tooltip" DefaultValue="Phish this email to sysadmin as attachment"/>
+		    <bt:String id="ActionButton.Tooltip" DefaultValue="Reporter des emails frauduleux à l'équipe Cyber-defense">
+           <bt:Override Locale="es-ES" Value="Notificación de correos electrónicos fraudulentos al equipo de Ciberdefensa" />
+           <bt:Override Locale="de-DE" Value="Betrügerische E-Mails an das Cyber-Abwehrteam melden" />
+        </bt:String>
       </bt:LongStrings>
-    
+
+      <!---->
+     
+      
+
+      
     </Resources>
 
   </VersionOverrides>
