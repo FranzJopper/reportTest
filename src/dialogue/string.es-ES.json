@@ -2,7 +2,8 @@
     "title": "Confirmación de transferencia",
     "yes": "Sí",
     "no": "No",
-    "message": "¿Desea informar de este correo electrónico como phishing al equipo de Ciberdefensa?"
+    "message": "¿Desea informar de este correo electrónico como phishing al equipo de Ciberdefensa?",
+    "notice": "Al hacer clic en "Sí", el correo electrónico seleccionado se reenvía al equipo de Ciberdefensa y se elimina automáticamente de sus correos electrónicos en un breve periodo de tiempo."
 }
   
   
