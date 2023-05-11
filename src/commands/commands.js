@@ -217,6 +217,20 @@ function suppEmail(){
 }
 
 function suppEmailFunc(accessToken) {
+    var suc = "Email transmit à l'équipe Cyber-defense"
+    var err = "Erreur lors du supression de votre email!"
+    var language = Office.context.displayLanguage;
+  
+    if (language==="de-DE"){
+      suc = "E-Mail an Cyber-Defense-Team weitergeleitet"
+      err = "Fehler beim Löschen Ihrer E-Mail!"
+    }
+    
+    if (language==="es-ES"){
+      suc = "Correo electrónico al equipo de Ciberdefensa"
+      err = "Error al borrar el correo electrónico"
+    }
+  
     var itemId = getItemRestId();
     var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/move";
     const deleteMeta = JSON.stringify({
@@ -230,9 +244,9 @@ function suppEmailFunc(accessToken) {
       data: deleteMeta,
       headers: { Authorization: "Bearer " + accessToken }
     }).done(function(response){
-      sucessNotif("Email transmit à l'équipe Cyber-defense");
+      sucessNotif(suc);
       
     }).fail(function(response){
-      failedNotif("Erreur lors du supression de votre email!");
+      failedNotif(err);
     });
   }
