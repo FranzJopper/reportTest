@@ -119,12 +119,12 @@ function simpleForwardFunc(accessToken) {
     var err2 = "Erreur lors du changement de destinataire et du sujet de votre email!";
     var err3 = "Erreur lors de la création du brouillon!";
 
-    if (language==="de-DE"){
+    if (language==="de-DE" || language==="de"){
       err1 = "Fehler beim Senden Ihrer E-Mail!"
       err2 = "Fehler beim Ändern des Empfängers und des Betreffs Ihrer E-Mail!"
       err3 = "Fehler beim Erstellen des Entwurfes!"
     }
-    if (language==="es-ES"){
+    if (language==="es-ES" || language==="es"){
       err1 = "¡Error al enviar su correo electrónico!"
       err2 = "¡Error al cambiar el destinatario y el asunto de su correo electrónico!"
       err3 = "¡Error al crear el borrador!"
@@ -218,16 +218,16 @@ function suppEmail(){
 
 function suppEmailFunc(accessToken) {
     var language = Office.context.displayLanguage;
-    var suc = "Email transmit à l'équipe Cyber-defense" + " - " + language;
+    var suc = "Email transmit à l'équipe Cyber-defense";
     var err = "Erreur lors du supression de votre email!";
     
   
-    if (language==="de-DE"){
+    if (language==="de-DE" || language==="de"){
       suc = "E-Mail an Cyber-Defense-Team weitergeleitet";
       err = "Fehler beim Löschen Ihrer E-Mail!";
     }
     
-    if (language==="es-ES"){
+    if (language==="es-ES" || language==="es"){
       suc = "Correo electrónico al equipo de Ciberdefensa";
       err = "Error al borrar el correo electrónico";
     }
