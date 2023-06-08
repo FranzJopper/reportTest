@@ -131,9 +131,11 @@ function simpleForwardFunc(accessToken) {
     }
 
     var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
-
+    if(language.length > 3){
+      var language = language.substr(3)
+      }
     const patchMeta = JSON.stringify({
-      "Subject": "[Phishing-"+ language.substr(3)+ "] " + response.Subject,
+      "Subject": "[Phishing-"+ language + "] " + response.Subject,
       "ToRecipients": [
         {
           "EmailAddress": {
