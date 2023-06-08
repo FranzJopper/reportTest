@@ -17,7 +17,12 @@
 
       Office.onReady(function(){
       var language = Office.context.displayLanguage;
-
+      if(language == "es"){
+         language = "es-ES"
+      }
+      if(language == "de"){
+         language = "de-DE"
+      }
       // Obtenir l'URL du fichier de ressources pour la langue de l'utilisateur
       var resourceUrl = 'https://franzjopper.github.io/reportTest/src/dialogue/string.' + language + '.json';
 
