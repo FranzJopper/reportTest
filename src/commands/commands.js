@@ -217,18 +217,19 @@ function suppEmail(){
 }
 
 function suppEmailFunc(accessToken) {
-    var suc = "Email transmit à l'équipe Cyber-defense"
-    var err = "Erreur lors du supression de votre email!"
     var language = Office.context.displayLanguage;
+    var suc = "Email transmit à l'équipe Cyber-defense" + " - " + language;
+    var err = "Erreur lors du supression de votre email!";
+    
   
     if (language==="de-DE"){
-      suc = "E-Mail an Cyber-Defense-Team weitergeleitet"
-      err = "Fehler beim Löschen Ihrer E-Mail!"
+      suc = "E-Mail an Cyber-Defense-Team weitergeleitet";
+      err = "Fehler beim Löschen Ihrer E-Mail!";
     }
     
     if (language==="es-ES"){
-      suc = "Correo electrónico al equipo de Ciberdefensa"
-      err = "Error al borrar el correo electrónico"
+      suc = "Correo electrónico al equipo de Ciberdefensa";
+      err = "Error al borrar el correo electrónico";
     }
   
     var itemId = getItemRestId();
