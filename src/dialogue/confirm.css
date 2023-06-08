@@ -1,55 +1,109 @@
-/* Styles pour PC */
-h2 {
-    color: #0078D7;
+@media screen and (max-width: 600px) {
+    h2 {
+        color: #0078D7;
+        font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 17px;
+        font-weight: 400;
+    }
+    
+    #notice {
+        color: #000000;
+        font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        margin-top: 20px;
+    }
+    
+    #oui {
+        background-color: #0078d7;
+        color: white;
+        font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin: 0;
+        box-shadow: none;
+        border: 1px solid #f4f4f4;
+        cursor: pointer;
+        height: 32px;
+        min-width: 80px;
+        padding: 4px 20px 6px;
+        margin-top: 20px;
+    }
+    
+    #non {
+        color: #333;
+        font-family: 'Segoe UI Semibold WestEuropean', 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin: 0;
+        box-shadow: none;
+        background-color: #f4f4f4;
+        border: 1px solid #f4f4f4;
+        cursor: pointer;
+        height: 32px;
+        min-width: 80px;
+        padding: 4px 20px 6px;
+        margin-top: 20px;
+    }
+    
+    .image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+  }
+
+@media screen and (min-width: 601px) {
+  h2{
+    color:#0078D7;
     font-family: 'Segoe UI Semilight WestEuropean','Segoe UI Semilight','Segoe UI',Tahoma,Arial,sans-serif;
     font-size: 17px;
     font-weight: 400;
     position: static;
   }
-  
-  #notice {
-    color: #000000;
+  #notice{
+    color:#000000;
     font-family: 'Segoe UI Semilight WestEuropean','Segoe UI Semilight','Segoe UI',Tahoma,Arial,sans-serif;
     font-size: 10px;
     font-weight: 400;
     top: 120px;
     right: 70px;
     position: static;  
+    
+  }
+  #oui{
+      background-color: #0078d7;
+      color: white;
+      font-family: 'Segoe UI Regular WestEuropean','Segoe UI',Tahoma,Arial,sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 0;
+      box-shadow: none;
+      border: 1px solid #f4f4f4;
+      cursor: pointer;
+      height: 32px;
+      min-width: 80px;
+      padding: 4px 20px 6px;
+      position: relative;
+      bottom: 35px;
   }
   
-  #oui {
-    background-color: #0078d7;
-    color: white;
-    font-family: 'Segoe UI Regular WestEuropean','Segoe UI',Tahoma,Arial,sans-serif;
-    font-size: 14px;
-    box-sizing: border-box;
-    margin: 0;
-    box-shadow: none;
-    border: 1px solid #f4f4f4;
-    cursor: pointer;
-    height: 32px;
-    min-width: 80px;
-    padding: 4px 20px 6px;
-    position: relative;
-    bottom: 35px;
-  }
-  
-  #non {
-    color: #333;
-    font-family: 'Segoe UI Semibold WestEuropean','Segoe UI Semibold','Segoe UI',Tahoma,Arial,sans-serif;
-    font-size: 14px;
-    box-sizing: border-box;
-    margin: 0;
-    box-shadow: none;
-    background-color: #f4f4f4;
-    border: 1px solid #f4f4f4;
-    cursor: pointer;
-    height: 32px;
-    min-width: 80px;
-    padding: 4px 20px 6px;
-    position: relative;
-    left: 20px;
-    bottom: 35px;
+  #non{
+      color: #333;
+      font-family: 'Segoe UI Semibold WestEuropean','Segoe UI Semibold','Segoe UI',Tahoma,Arial,sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 0;
+      box-shadow: none;
+      background-color: #f4f4f4;
+      border: 1px solid #f4f4f4;
+      cursor: pointer;
+      height: 32px;
+      min-width: 80px;
+      padding: 4px 20px 6px;
+      position: relative;
+      left: 20px;
+      bottom: 35px;
   }
   
   .image {
@@ -59,32 +113,4 @@ h2 {
     height: 80px;
     position: relative;
   }
-  
-  /* Styles pour mobile */
-  @media screen and (max-width: 767px) {
-    h2 {
-      font-size: 14px;
-    }
-    
-    #notice {
-      font-size: 8px;
-      top: 90px;
-      right: 40px;
-    }
-    
-    #oui,
-    #non {
-      font-size: 12px;
-      height: 28px;
-      min-width: 70px;
-      bottom: 25px;
-    }
-    
-    .image {
-      top: 50px;
-      right: 120px;
-      width: 200px;
-      height: 60px;
-    }
-  }
-  
+}
