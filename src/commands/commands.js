@@ -130,12 +130,12 @@ function simpleForwardFunc(accessToken) {
       err3 = "¡Error al crear el borrador!"
     }
 
-    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId;
+    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId
     if(language.length > 3){
       var language = language.substr(3)
       }
     const patchMeta = JSON.stringify({
-      "Subject": "[Phishing-"+ language + "] " + response.Subject,
+      "Subject": "[Phishing-"+ language.toUpperCase() + "] " + response.Subject,
       "ToRecipients": [
         {
           "EmailAddress": {
