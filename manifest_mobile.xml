@@ -12,8 +12,8 @@
     <Override Locale="de-DE" Value="Betrügerische E-Mails an das Cyber-Abwehrteam melden"/>
 		<Override Locale="es-es" Value="Notificación de correos electrónicos fraudulentos al equipo de Ciberdefensa"/>
   </Description>  
-  <IconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icons_32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icons_80.png"/>
+  <IconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icon_32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://franzjopper.github.io/reportTest/assets/icon_80.png"/>
   <SupportUrl DefaultValue="https://franzjopper.github.io/reportTest"/>
   <AppDomains>
     <AppDomain>https://github.com/FranzJopper/reportTest</AppDomain>
@@ -119,9 +119,9 @@
     <Resources>
      
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons_16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons_32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://franzjopper.github.io/reportTest/assets/icons_80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon_16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon_32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://franzjopper.github.io/reportTest/assets/icon_80.png"/>
       </bt:Images>
       
       <bt:Urls>
