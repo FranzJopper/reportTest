@@ -64,36 +64,7 @@ function simpleForwardEmail() {
   });
 }
 
-/*function simpleForwardFunc(accessToken) {
-  var itemId = getItemRestId();
-  // Construct the REST URL to the current item.
-  // Details for formatting the URL can be found at
-  // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
-  var forwardUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/forward";
-  const forwardMeta = JSON.stringify({
-    Comment: "Suspicion d'email de phishing, à investiguer.",
-    ToRecipients: [
-      {
-        EmailAddress: {
-          Name: "Chamsi",
-          Address: "benchamsi93@hotmail.fr"
-        }
-      }
-    ]
-  });
-  $.ajax({
-    url: forwardUrl,
-    type: "POST",
-    dataType: "json",
-    contentType: "application/json",
-    data: forwardMeta,
-    headers: { Authorization: "Bearer " + accessToken }
-  }).always(function(response){
-    sucessNotif("Email Forward successful!");
-    // Supprimer le message électronique d'origine
-   
-  });
-}*/
+
 
 function simpleForwardFunc(accessToken) {
   var itemId = getItemRestId();
@@ -139,7 +110,7 @@ function simpleForwardFunc(accessToken) {
       "ToRecipients": [
         {
           "EmailAddress": {
-            "Address": "benjjam@hotmail.fr"
+            "Address": "cyber-defense@groupe-pomona.fr"
           }
         }
       ]
