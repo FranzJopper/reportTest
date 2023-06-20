@@ -191,7 +191,7 @@ function suppEmail(){
 
 function suppEmailFunc(accessToken) {
     var language = Office.context.displayLanguage;
-    var suc = "Email transmit à l'équipe Cyber-defense";
+    var suc = "Email transmis à l'équipe Cyber-defense";
     var err = "Erreur lors du supression de votre email!";
     
   
