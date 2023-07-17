@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Générateur de mot de passe</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img height="50" src="../../assets/pomonaimg.png" alt="Pomona" title="Pomona" />
+        <h1 class="ms-font-su">Générateur de mot de passe</h1>
+    </header>
+    <div class="genpwd" align="center">
+        À partir de mots aléatoires <br/><br/>
+        <button id="genPwButton"> Générer</button>
+        <input type=text id="password" size=30>
+        <button class="copybtn" id="copyButton">
+            <img id="copyimg" src="https://beastin24.github.io/Test/Taskpane/assets/copyimg.png" border="0" data-changeimage="https://beastin24.github.io/Test/Taskpane/assets/checkimg.png" width="10px" height="10px"/> 
+        </button>
+    </div>
+    <div class="genpwd" align="center">
+        À partir de mots choisis <br/><br/>
+        <input type=text id="word1" size=20>
+        <input type=text id="word2" size=20>
+        <input type=text id="word3" size=20><br/><br/>
+        <button id="genPwButton2"> Générer</button>
+        <input type=text id="password2" size=30>
+        <button class="copybtn" id="copyButton2">
+            <img id="copyimg2" src="https://beastin24.github.io/Test/Taskpane/assets/copyimg.png" border="0" data-changeimage="https://beastin24.github.io/Test/Taskpane/assets/checkimg.png" width="10px" height="10px"/> 
+        </button>
+    </div>
+    <script type="module" src="taskpane.js"></script>
+</body>
+
+</html>
