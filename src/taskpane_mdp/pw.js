@@ -1,6 +1,7 @@
 function createPW(passphrase) {
   var specialList = "`~!@#$%^&*-_=+\\|;:,./?";
-  var list = ""
+  var list = "";
+  var password ="";
   for (let i = 0; i < passphrase.length; i++) {
     if (passphrase[i] == 'a' || passphrase[i] == 'à' || passphrase[i] == 'â') {
       list = "aaaaaa44A";
