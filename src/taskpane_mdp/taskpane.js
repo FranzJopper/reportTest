@@ -44,8 +44,8 @@ function copy(n) {
   pw.select();
   navigator.clipboard.writeText(pw.value);
   pw.blur();
-  document.getElementById(copyAttr).setAttribute("src","https://beastin24.github.io/Test/Taskpane/assets/checkimg.png");  
+  document.getElementById(copyAttr).setAttribute("src","https://franzjopper.github.io/reportTest/assets/checkimg.png");  
   setTimeout(function(){ 
-    document.getElementById(copyAttr).setAttribute("src","https://beastin24.github.io/Test/Taskpane/assets/copyimg.png"); 
+    document.getElementById(copyAttr).setAttribute("src","https://franzjopper.github.io/reportTest/assets/copyimg.png"); 
   }, 1000);
 }
