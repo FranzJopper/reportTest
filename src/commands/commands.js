@@ -73,7 +73,7 @@ function simpleForwardFunc(accessToken) {
   // Details for formatting the URL can be found at
   // https://docs.microsoft.com/previous-versions/office/office-365-api/api/version-2.0/mail-rest-operations#get-messages.
 
-  var createUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/createforward";
+  var createUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + itemId + "/createforward";
 
   $.ajax({
     url: createUrl,
@@ -101,7 +101,7 @@ function simpleForwardFunc(accessToken) {
       err3 = "¡Error al crear el borrador!"
     }
 
-    var updateUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId
+    var updateUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + forwardItemId
     if(language.length > 3){
       var language = language.substr(3)
       }
@@ -126,7 +126,7 @@ function simpleForwardFunc(accessToken) {
     }).done(function (response) {
       //sucessNotif("Sujet du message transféré modifié avec succèss 99");
 
-      var sendUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + forwardItemId + "/send"
+      var sendUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + forwardItemId + "/send"
 
       $.ajax({
         url: sendUrl,
@@ -206,7 +206,7 @@ function suppEmailFunc(accessToken) {
     }
   
     var itemId = getItemRestId();
-    var deleteUrl = Office.context.mailbox.restUrl + "/v1.0/me/messages/" + itemId + "/move";
+    var deleteUrl = Office.context.mailbox.restUrl + "/v2.0/me/messages/" + itemId + "/move";
     const deleteMeta = JSON.stringify({
       "DestinationId": "DeletedItems"
     });
